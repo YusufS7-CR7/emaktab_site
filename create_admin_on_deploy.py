@@ -1,9 +1,10 @@
 import os
 import django
-from django.contrib.auth.models import User
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 django.setup()
+
+from django.contrib.auth.models import User
 
 username = 'admin'
 email = 'admin@example.com'
