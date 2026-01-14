@@ -1,19 +1,14 @@
 services:
   - type: web
     name: emaktab-site
+    plan: free
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn project.wsgi:application"
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: emaktab-db
-          property: connectionString
+        sync: false # User will provide this manually from Neon or other provider
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
-
-databases:
-  - name: emaktab-db
-    plan: free
