@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <h1>Дневник ученика: {{ student.first_name }} {{ student.last_name }}</h1>
+        <p class="lead text-muted">Ваши средние баллы по предметам</p>
+    </div>
+</div>
+
+<div class="row">
+    {% for subject in subjects %}
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'subject_detail' subject.id %}" class="text-decoration-none">
+            <div class="card h-100 card-3d">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">{{ subject.name }}</h3>
+                    <div class="display-1 fw-bold mb-3" style="color: {{ subject.color_hsl }};">
+                        {{ subject.average|default:"—"|floatformat:1 }}
+                    </div>
+                    <p class="card-text text-muted">Средний балл</p>
+                    <small class="text-muted">Нажмите для подробностей</small>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">Предметов пока нет.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

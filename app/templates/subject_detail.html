@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="col-12 mb-4">
+            <a href="{% url 'subject_list' %}" class="btn btn-secondary mb-3">&larr; Назад к предметам</a>
+            <h1>{{ subject.name }}</h1>
+            <p class="lead text-muted">История ваших оценок</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            {% if grades %}
+            <div class="row">
+                {% for grade in grades %}
+                <div class="col-12 mb-4">
+                    <div class="card card-3d">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title mb-0">
+                                    <span class="badge 
+                                        {% if grade.value >= 4 %}bg-success
+                                        {% elif grade.value == 3 %}bg-warning
+                                        {% else %}bg-danger{% endif %} rounded-pill fs-4 px-4 py-2">
+                                        {{ grade.value }}
+                                    </span>
+                                </h5>
+                                <small class="text-muted fw-medium">{{ grade.date|date:"d F Y" }}</small>
+                            </div>
+
+                            <div class="p-4 rounded-3 bg-light mb-4 border border-light">
+                                {% if grade.comment %}
+                                <p class="card-text mb-0 fs-5 text-dark" style="line-height:1.6;">{{ grade.comment }}
+                                </p>
+                                {% else %}
+                                <p class="card-text mb-0 text-muted fst-italic">Нет описания к оценке</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="d-flex align-items-center pt-3 border-top">
+                                <div class="small text-muted">
+                                    <span class="text-uppercase fw-bold x-small"
+                                        style="font-size: 0.7rem; letter-spacing: 0.5px;">Преподаватель</span>
+                                    <div class="text-dark fw-medium mt-1">
+                                        {{ grade.teacher.first_name }} {{ grade.teacher.last_name }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="alert alert-info">По этому предмету пока нет оценок.</div>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}

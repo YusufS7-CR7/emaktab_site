@@ -1,0 +1,122 @@
+Creating test database for alias 'default'...
+EE.E
+======================================================================
+ERROR: test_registration_student (app.tests.SchoolDiaryTests.test_registration_student)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Dell\Downloads\eMaktab_site\app\tests.py", line 12, in test_registration_student
+    response = self.client.post(reverse('register'), {
+        'username': 'student1',
+    ...<3 lines>...
+        'role': 'student'
+    })
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 1153, in post
+    response = super().post(
+        path,
+    ...<5 lines>...
+        **extra,
+    )
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 499, in post
+    return self.generic(
+           ~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<6 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 671, in generic
+    return self.request(**r)
+           ~~~~~~~~~~~~^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 1087, in request
+    self.check_exception(response)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 802, in check_exception
+    raise exc_value
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Dell\Downloads\eMaktab_site\app\views.py", line 28, in register
+    return redirect('home')
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+
+======================================================================
+ERROR: test_registration_teacher (app.tests.SchoolDiaryTests.test_registration_teacher)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Dell\Downloads\eMaktab_site\app\tests.py", line 25, in test_registration_teacher
+    response = self.client.post(reverse('register'), {
+        'username': 'teacher1',
+    ...<3 lines>...
+        'role': 'teacher'
+    })
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 1153, in post
+    response = super().post(
+        path,
+    ...<5 lines>...
+        **extra,
+    )
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 499, in post
+    return self.generic(
+           ~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<6 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 671, in generic
+    return self.request(**r)
+           ~~~~~~~~~~~~^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 1087, in request
+    self.check_exception(response)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\test\client.py", line 802, in check_exception
+    raise exc_value
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Dell\Downloads\eMaktab_site\app\views.py", line 28, in register
+    return redirect('home')
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+
+======================================================================
+ERROR: test_teacher_can_add_grade (app.tests.SchoolDiaryTests.test_teacher_can_add_grade)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Dell\Downloads\eMaktab_site\app\tests.py", line 48, in test_teacher_can_add_grade
+    response = self.client.post(reverse('add_grade'), {
+                                ~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Dell\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'add_grade' with no arguments not found. 1 pattern(s) tried: ['subjects/(?P<subject_id>[0-9]+)/add/\\Z']
+
+----------------------------------------------------------------------
+Ran 4 tests in 11.926s
+
+FAILED (errors=3)
+Destroying test database for alias 'default'...

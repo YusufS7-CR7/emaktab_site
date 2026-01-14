@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="text-center mb-4">Поставить оценку</h2>
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Ученик</label>
+                    {{ form.student }}
+                    {% if form.student.errors %}
+                    <div class="text-danger small">{{ form.student.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Предмет</label>
+                    {{ form.subject }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Оценка (1-5)</label>
+                    {{ form.value }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Комментарий</label>
+                    {{ form.comment }}
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-success btn-lg">Сохранить</button>
+                    <a href="{% url 'teacher_dashboard' %}" class="btn btn-outline-secondary mt-2">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+--- START VERIFICATION ---
+Register Teacher Status: 302
+Teacher Role: teacher
+Register Student Status: 302
+Student Role: student
+Add Grade Status: 302
+Grade Count: 1
+Grade: 5 for stud by teach
+Student Dash Failed: Save with update_fields did not affect any rows.
+Subject Detail Status: 302
+WARNING: Comment not found on detail page
+--- END VERIFICATION ---
